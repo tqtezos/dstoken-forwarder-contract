@@ -49,6 +49,7 @@ data Parameter
   deriving  (Generic)
   deriving  (Show)
   deriving  (IsoValue)
+  deriving  (HasTypeAnn)
 
 instance ParameterHasEntryPoints Parameter where
   type ParameterEntryPointsDerivation Parameter = EpdPlain -- None

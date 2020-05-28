@@ -1,10 +1,10 @@
-name:                prototype-forwarder-contract
+name:                dstoken-forwarder-contract
 version:             0.1.0.0
-github:              "githubuser/prototype-forwarder-contract"
+github:              "tqtezos/dstoken-forwarder-contract"
 license:             MIT
 author:              "Michael J. Klein"
 maintainer:          "michael@tqgroup.io"
-copyright:           "2019 Michael J. Klein"
+copyright:           "2019-2020 Michael J. Klein, TQ Tezos"
 
 extra-source-files:
 - README.md
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/tqtezos/prototype-forwarder-contract#readme>
+description:         Please see the README on GitHub at <https://github.com/tqtezos/dstoken-forwarder-contract#readme>
 
 flags:
   dstoken:
@@ -54,7 +54,7 @@ library:
   source-dirs: src
 
 executables:
-  prototype-forwarder-contract:
+  dstoken-forwarder-contract:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -62,7 +62,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - prototype-forwarder-contract
+    - dstoken-forwarder-contract
     - morley
     - morley-nettest
     - fmt
@@ -79,7 +79,7 @@ executables:
         cpp-options: -DNO_DSTOKEN
 
 tests:
-  prototype-forwarder-contract-test:
+  dstoken-forwarder-contract-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -87,7 +87,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - prototype-forwarder-contract
+    - dstoken-forwarder-contract
     - fmt
     - hspec
     - tasty

@@ -35,8 +35,6 @@ import qualified Lorentz.Contracts.DS.V1.Token.Types as Token
 import GHC.TypeLits (KnownSymbol)
 import Prelude (Enum(..), ($))
 
-import Data.Vinyl.Derived (Label)
-
 -- | Construct a 'UParam' safely. See `mkUParam`.
 toUParam
   :: forall name (a :: *) (entries :: [EntryPointKind]) s.

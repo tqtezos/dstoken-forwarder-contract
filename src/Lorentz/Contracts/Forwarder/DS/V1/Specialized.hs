@@ -31,14 +31,14 @@ import Lorentz.Base (SomeContract(..))
 import Michelson.Analyzer (AnalyzerRes)
 import Michelson.Text
 
+import Michelson.Typed.Value.Orphans ()
+
 import qualified Lorentz.Contracts.DS.V1 as DS
 import Lorentz.Contracts.Forwarder.DS.V1 (toTransferParameter)
 
 import Data.Type.Equality
 import Data.Typeable
 import Prelude (Enum(..), Eq(..), ($), String, show)
-
-import GHC.Natural.Orphans ()
 
 -- | The number of sub-tokens to forward
 type Parameter = Natural

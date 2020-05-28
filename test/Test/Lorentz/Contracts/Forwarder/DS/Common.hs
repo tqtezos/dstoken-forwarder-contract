@@ -26,6 +26,7 @@ import Lorentz.Contracts.DS.V1.Registry as Registry
 import qualified Lorentz.Contracts.Upgradeable.Common as Upg
 import Lorentz.Test
 import Lorentz.UParam
+import Util.Named
 
 import Test.Lorentz.Contracts.Forwarder.Common
 
@@ -79,15 +80,13 @@ originateDSTokenWithParameters origParameters = do
     (toMutez 0)
   upgradeToV1 origParameters contract
 
-upgradeToV1 ::
-     OriginationParameters
+-- We deliberately use forall here so that we can test incorrect upgrades
+upgradeToV1
+  :: OriginationParameters
   -> TAddress (Upg.Parameter V0.VersionId0)
   -> IntegrationalScenarioM DSRef
-upgradeToV1 origParameters contract =
-  -- 'coerceContractRef' is necessary because our 'Parameter' is a
-  -- newtype wrapper.
-  coerce <$>
-  Upg.integrationalTestEpwUpgrade (v1UpgradeParameters origParameters) contract
+upgradeToV1 origParameters =
+  fmap coerce . Upg.integrationalTestUpgrade (v1UpgradeParameters origParameters) Upg.UpgEntryPointWise
 
 registerInvestor
     :: DSRef -> InvestorId -> [Address] -> IntegrationalScenarioM ()
@@ -103,7 +102,7 @@ mint :: DSRef -> Address -> Natural -> IntegrationalScenarioM ()
 mint dsRef beneficiary amount =
   withSender masterAddress $
     dsCall #callTokenMint dsRef $
-      Token.Mint (Token.mintParamSimple wallet amount, Token.CommitRun)
+      Token.Mint (#to .! wallet, #val .! amount, #issuanceTime .? Nothing, #reason .? Nothing, #lock .? Nothing)
   where wallet = WalletId beneficiary
 
 #endif

@@ -22,9 +22,12 @@ import qualified Lorentz.Contracts.Forwarder.DS.V1.Specialized as Fwd
 import qualified Lorentz.Contracts.Forwarder.DS.V1.Validated as Validated
 import Lorentz.Contracts.Validate.Reception (Parameter(..), Whitelist)
 import Lorentz.Contracts.Product ((:|:)(..))
+import Michelson.Typed.Value.Orphans ()
+
 import Lorentz.Test
 import Test.Hspec (Spec, describe, it)
 import Util.Named ((.!))
+
 
 import Test.Lorentz.Contracts.Forwarder.Common
 import Test.Lorentz.Contracts.Forwarder.DS.Common

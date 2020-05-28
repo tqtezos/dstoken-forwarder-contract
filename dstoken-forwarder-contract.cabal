@@ -1,19 +1,19 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.31.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 98e871bb2d97ba643d5d0fb7a8082ebaacf367fb27e307e92c9de5d25bba35a9
+-- hash: 3de5d6c59107fa06e5aeec6ba6701ea198bca9fb307432f5ad19e700d7709db3
 
-name:           prototype-forwarder-contract
+name:           dstoken-forwarder-contract
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/tqtezos/prototype-forwarder-contract#readme>
-homepage:       https://github.com/githubuser/prototype-forwarder-contract#readme
-bug-reports:    https://github.com/githubuser/prototype-forwarder-contract/issues
+description:    Please see the README on GitHub at <https://github.com/tqtezos/dstoken-forwarder-contract#readme>
+homepage:       https://github.com/tqtezos/dstoken-forwarder-contract#readme
+bug-reports:    https://github.com/tqtezos/dstoken-forwarder-contract/issues
 author:         Michael J. Klein
 maintainer:     michael@tqgroup.io
-copyright:      2019 Michael J. Klein
+copyright:      2019-2020 Michael J. Klein, TQ Tezos
 license:        MIT
 license-file:   LICENSE
 build-type:     Simple
@@ -23,7 +23,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/prototype-forwarder-contract
+  location: https://github.com/tqtezos/dstoken-forwarder-contract
 
 flag dstoken
   description: Include DS Token
@@ -48,7 +48,7 @@ library
       Lorentz.Contracts.View
       Michelson.Typed.Value.Orphans
   other-modules:
-      Paths_prototype_forwarder_contract
+      Paths_dstoken_forwarder_contract
   hs-source-dirs:
       src
   build-depends:
@@ -73,11 +73,11 @@ library
     cpp-options: -DNO_DSTOKEN
   default-language: Haskell2010
 
-executable prototype-forwarder-contract
+executable dstoken-forwarder-contract
   main-is: Main.hs
   other-modules:
       NettestHelpers
-      Paths_prototype_forwarder_contract
+      Paths_dstoken_forwarder_contract
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -85,6 +85,7 @@ executable prototype-forwarder-contract
       base >=4.7 && <5
     , constraints
     , containers
+    , dstoken-forwarder-contract
     , fmt
     , lorentz
     , morley
@@ -93,7 +94,6 @@ executable prototype-forwarder-contract
     , morley-upgradeable
     , named
     , optparse-applicative
-    , prototype-forwarder-contract
     , random
     , singletons
     , text
@@ -113,7 +113,7 @@ executable prototype-forwarder-contract
     cpp-options: -DNO_DSTOKEN
   default-language: Haskell2010
 
-test-suite prototype-forwarder-contract-test
+test-suite dstoken-forwarder-contract-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
@@ -122,7 +122,7 @@ test-suite prototype-forwarder-contract-test
       Test.Lorentz.Contracts.Forwarder.DS.Common
       Test.Lorentz.Contracts.Forwarder.Specialized
       Tree
-      Paths_prototype_forwarder_contract
+      Paths_dstoken_forwarder_contract
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -130,6 +130,7 @@ test-suite prototype-forwarder-contract-test
       base >=4.7 && <5
     , constraints
     , containers
+    , dstoken-forwarder-contract
     , fmt
     , hspec
     , lorentz
@@ -138,9 +139,9 @@ test-suite prototype-forwarder-contract-test
     , morley-nettest
     , morley-upgradeable
     , named
-    , prototype-forwarder-contract
     , singletons
     , tasty
+    , tasty-discover
     , tasty-hspec
     , text
     , universum

@@ -46,6 +46,8 @@ type Storage = ()
 data Parameter = Default () | Flush FlushAny.Parameter
   deriving  (Generic, IsoValue, Show)
 
+deriving instance HasTypeAnn Parameter
+
 instance ParameterHasEntryPoints Parameter where
   type ParameterEntryPointsDerivation Parameter = EpdPlain
 

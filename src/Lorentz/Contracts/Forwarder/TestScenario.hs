@@ -35,6 +35,7 @@ import Michelson.Text (mt)
 import qualified Morley.Nettest as NT
 import Tezos.Address (Address)
 import Tezos.Core
+import Util.Named
 
 #ifdef HAS_DSTOKEN
 inv0, inv1 :: InvestorId
@@ -50,11 +51,11 @@ attrInfo0 = AttributeInfo AttrStatApproved Nothing Nothing
 
 mint :: WalletId -> L.Natural -> Token.ParameterMint
 mint wallet val =
-  Token.Mint (Token.mintParamSimple wallet val, Token.CommitRun)
+  Token.Mint (#to .! wallet, #val .! val, #issuanceTime .? Nothing, #reason .? Nothing, #lock .? Nothing)
 
 burn :: WalletId -> L.Natural -> Token.ParameterBurn
 burn wallet val =
-  Token.Burn (Token.burnParamSimple wallet val, Token.CommitRun)
+  Token.Burn (#from .! wallet, #val .! val, #reason .? Nothing)
 
 
 -- | Required for achieveing worst-case gas consumption for @transfer@.

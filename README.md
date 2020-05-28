@@ -1,4 +1,9 @@
-# prototype-forwarder-contract
+
+NOTE: This repository is deprecated: see
+[here](https://github.com/tqtezos/prototype-forwarder-contract)
+for an updated version.
+
+# dstoken-forwarder-contract
 
 ## Building
 
@@ -11,12 +16,12 @@ stack build
 To build with `DS Token`:
 
 ```bash
-stack build --stack-yaml stack-dstoken.yaml --flag prototype-forwarder-contract:dstoken
+stack build --stack-yaml stack-dstoken.yaml --flag dstoken-forwarder-contract:dstoken
 ```
 
 ## Introduction
 
-A prototype sub-token forwarder contract:
+A dstoken forwarder contract:
 
   1. investor has sub-tokens
   2. investor assigned a forwarder contract to send sub-tokens to

@@ -49,7 +49,7 @@ data Parameter = Parameter
   deriving stock Generic
   deriving anyclass IsoValue
 
-instance HasTypeAnn Parameter
+deriving instance HasTypeAnn Parameter
 
 instance ParameterHasEntryPoints Parameter where
   type ParameterEntryPointsDerivation Parameter = EpdNone
